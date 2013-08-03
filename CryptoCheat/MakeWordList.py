@@ -1,4 +1,4 @@
-import sys, os, gzip
+import sys, os, gzip, re
 
 class MakeWordList():
     """
@@ -19,7 +19,17 @@ class MakeWordList():
 
     def __read(self):
         with open(self.path) as rawFile:
-            self.rawData = rawFile.read().split()
+            self.rawData = rawFile.read().split(',')
+
+        for i in range(len(self.rawData)):
+            self.rawData[i] = self.rawData[i].split('\r\n')
+
+        self.rawData =  [item for sublist in self.rawData for item in sublist]
+       
+        for i in range(len(self.rawData)):
+            self.rawData[i] = self.rawData[i].split(' ')
+
+        self.rawData =  [item for sublist in self.rawData for item in sublist]
 
         self.rawData = list(set(self.rawData))
 
