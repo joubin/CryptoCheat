@@ -27,7 +27,7 @@ class RealWord:
                 score -= 1
 
 
-        if score > .7:
+        if score > .7: # If 70% of the words in the original sentance is are real words, then it is safe to assume that the other 30% are names or acrynoms. Change this value if you dont agree. 
             return True
         else: 
             return False
