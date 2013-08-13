@@ -4,8 +4,8 @@ from RealWord import RealWord
 class LetterFreq:
     def __init__(self, text):
         self.text = text.lower()
-        self.alphabet = "abcdefghijklmnopqrstuvwxyz"
-        self.alphabetUpper = "abcdefghijklmnopqrstuvwxyz".upper()
+        self.alphabet = string.lowercase
+        self.alphabetUpper = string.uppercase
         self.textLetters = {}
         self.textFreqOrdered = []
         self.punctuation = set(string.punctuation)
