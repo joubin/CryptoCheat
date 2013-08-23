@@ -17,6 +17,9 @@ from ttk import *
 
 
 class CryptoGui:
+    """
+    This class is in charge of creating the gui. 
+    """
 
     def __init__(self):
         self.__CreateAndShowGUI()
@@ -44,6 +47,11 @@ class CryptoGui:
         print "after threading is done"
 
 class DecryptThread(threading.Thread):
+    """
+    This class threads the individual tasks. 
+
+    In future this class will be demoted and a DecryptThread will be create that will start many thraeds
+    """
 
     def __init__(self, GuiAddress):
         threading.Thread.__init__(self)
