@@ -7,17 +7,20 @@ import ttk
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'CryptoCheat'))
 import LetterFreq
-from threading import Thread
+import threading
+import thread
 from LetterFreq import *
 from Tkinter import *
 from ttk import *
+
+
 
 
 class CryptoGui:
 
     def __init__(self):
         self.__CreateAndShowGUI()
-        print 'hello'
+
 
     def __CreateAndShowGUI(self):
         root = Tk()
@@ -37,8 +40,27 @@ class CryptoGui:
         root.mainloop()
 
     def __OkAction(self):
-        self.progress.start()
-        Thread(target=self.textBottom.insert(1.0, LetterFreq(str(self.textTop.get(1.0, END)).strip('\n')).get())).start()
-        Thread.join()
-        #textBottom.insert(1.0, LetterFreq(str(textTop.get(1.0, END)).strip('\n')).get())
-        progress.stop()
+        DecryptThread(self)
+        print "after threading is done"
+
+class DecryptThread(threading.Thread):
+
+    def __init__(self, GuiAddress):
+        threading.Thread.__init__(self)
+        self.gui = GuiAddress
+        print "Going to start the progress bar from the threaded class right before I start the class"
+        self.start()
+
+    def run(self):
+        self.gui.progress.start()
+        textFromTop = self.gui.textTop.get(1.0, END).strip('\n')
+        decryptedText = LetterFreq(textFromTop).get()
+        self.gui.textBottom.insert(1.0, decryptedText)
+        self.gui.progress.stop()
+
+
+if __name__ == '__main__':
+    try:
+        CryptoGui()
+    except Exception, e:
+        print e
