@@ -10,7 +10,7 @@ class MakeWordList():
         self.path = path
         self.rawData = None
         self.writePath = os.path.dirname(os.getcwd())
-        self.extras = '..' + os.sep +'extras'
+        self.extras = self.writePath+'/extras'
         if not os.path.exists(self.extras):
             os.makedirs(self.extras)
         self.__read()
@@ -36,7 +36,7 @@ class MakeWordList():
 
 
     def __makeZip(self):
-        with gzip.open(self.extras+ os.sep +'words.gzip', 'w') as zipFile:
+        with gzip.open(self.extras+'/words.gzip', 'w') as zipFile:
             zipFile.write(str(self.rawData))
 
 
