@@ -1,3 +1,7 @@
+#!/user/bin/python
+# -*- coding: utf-8 -*-
+# This file contains a LetterFreq as well as rotation ciphers
+
 import string, operator
 from RealWord import RealWord
 
