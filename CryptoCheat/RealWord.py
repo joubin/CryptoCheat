@@ -6,8 +6,8 @@ class RealWord:
         self.WordsToTest = word.lower().split()
         self.KnownWords = None
         self.writePath = os.path.dirname(os.getcwd())
-        self.extras = self.writePath+'/extras'
-        self.wordList = self.extras+'/words.gzip'
+        self.extras = os.getcwd()+ os.sep + 'extras'
+        self.wordList = self.extras+ os.sep + 'words.gzip'
         try:
             with gzip.open(self.wordList, 'rb') as wordList:
                 self.KnownWords = wordList.read()

@@ -24,6 +24,8 @@ class CryptoGui:
     def __init__(self):
         self.__CreateAndShowGUI()
 
+    def __ClearBottomTextBox(self):
+        self.textBottom.delete(1.0, END)
 
     def __CreateAndShowGUI(self):
         root = Tk()
@@ -43,6 +45,7 @@ class CryptoGui:
         root.mainloop()
 
     def __OkAction(self):
+        self.__ClearBottomTextBox()
         DecryptThread(self)
         print "after threading is done"
 
