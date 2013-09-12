@@ -30,7 +30,16 @@ class CryptoGui:
     def __CreateAndShowGUI(self):
         root = Tk()
         root.title("CryptoCheat")
+        root.columnconfigure(0, weight=1)
+        root.rowconfigure(0, weight=1)
         content = ttk.Frame(root, padding=(3,3,12,12))
+        content.grid_rowconfigure(0, weight=1)
+        content.grid_rowconfigure(1, weight=1)
+        content.grid_rowconfigure(2, weight=1)
+        content.grid_columnconfigure(0, weight=1)
+        content.grid_columnconfigure(1, weight=1)
+        content.grid_columnconfigure(2, weight=1)
+        content.grid(sticky=N+W+E+S)
         self.textTop = Text(content, width=40, height=10)
         self.textBottom= Text(content, width=40, height=10)
         self.progress = ttk.Progressbar(content, orient=HORIZONTAL, length =200, mode='indeterminate')
@@ -40,8 +49,6 @@ class CryptoGui:
         self.textBottom.grid(column=0, row=1, columnspan=3, rowspan=1, sticky=(N, S, E, W), pady=5)
         self.progress.grid(column=0, row=2, columnspan =2)
         ok.grid(column=2, row=2, sticky=(E))
-        root.columnconfigure(0, weight=1)
-        root.rowconfigure(0, weight=1)
         root.mainloop()
 
     def __OkAction(self):
