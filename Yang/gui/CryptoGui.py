@@ -71,7 +71,10 @@ class DecryptThread(threading.Thread):
 
     def run(self):
         self.gui.progress.start()
-        textFromTop = self.gui.textTop.get(1.0, END).strip('\n')
+        #textFromTop = self.gui.textTop.get(1.0, END).strip('\n')
+        textFromTop = self.gui.textTop.get(1.0, END).rstrip()
+        temp = str(textFromTop)
+        textFromTop = temp.replace('\n', ' ') 
         decryptedText = LetterFreq(textFromTop).get()
         self.gui.textBottom.insert(1.0, decryptedText)
         self.gui.progress.stop()

@@ -14,6 +14,7 @@ class LetterFreq:
         self.textFreqOrdered = []
         self.punctuation = set(string.punctuation)
         self.freqSets = {
+        'classbook' : 'ETAOINSHRDLCFMWUGYPBVKJXQZ',
         'press': 'ETAONISRHLDCMUFPGWYBVKJXQZ', 
         'wikipedia': 'ETAOINSHRDLCUMWFGYPBVKJXQZ', 
         'scientific': 'ETAIONSRHLCDUMFPGYBWVKXQJZ', 
